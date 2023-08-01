@@ -1,38 +1,62 @@
-import React, { useState } from "react";
-import TaskForm from "./Components/TaskForm";
-import TaskList from "./Components/TaskList";
-import "./App.css";
+// import React, { useState } from "react";
+// import TaskForm from "./Components/TaskForm";
+// import TaskList from "./Components/TaskList";
+// import "./App.css";
+// import UserList from "./UserList";
 
-const App = () => {
-  const [tasks, setTasks] = useState([]);
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./Components/Login";
+import SideBar from "./Components/SideBar";
+import Layout from "./Layout"
+import Tasks from "./Components/Tasks"
 
-  const addTask = (task) => {
-    setTasks([...tasks, task]);
-  };
+// const App = () => {
+//   const [tasks, setTasks] = useState([]);
 
-  const completeTask = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index].completed = !updatedTasks[index].completed;
-    setTasks(updatedTasks);
-  };
+//   const addTask = (task) => {
+//     setTasks([...tasks, task]);
+//   };
 
-  const deleteTask = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks.splice(index, 1);
-    setTasks(updatedTasks);
-  };
+//   const completeTask = (index) => {
+//     const updatedTasks = [...tasks];
+//     updatedTasks[index].completed = !updatedTasks[index].completed;
+//     setTasks(updatedTasks);
+//   };
 
+//   const deleteTask = (index) => {
+//     const updatedTasks = [...tasks];
+//     updatedTasks.splice(index, 1);
+//     setTasks(updatedTasks);
+//   };
+
+//   return (
+//     <div className="container justify-center text-center w-100vh h-100% bg-slate-200 my-8">
+//       <h1>Task Management System</h1>
+//       <TaskForm addTask={addTask} />
+//       <TaskList
+//         tasks={tasks}
+//         completeTask={completeTask}
+//         deleteTask={deleteTask}
+//       />
+//       <UserList />
+//     </div>
+//   );
+// };
+
+
+
+export const App = () => {
   return (
-    <div className="container">
-      <h1>Task Management System</h1>
-      <TaskForm addTask={addTask} />
-      <TaskList
-        tasks={tasks}
-        completeTask={completeTask}
-        deleteTask={deleteTask}
-      />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="tasks" element={<Tasks />} />
+        </Route>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
-export default App;
+
+export default App
