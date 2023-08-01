@@ -1,15 +1,19 @@
-import React from 'react'
-import TaskList from './TaskList'
-import UserList from '../UserList'
+import React, { useState } from 'react'
+// import TaskList from './TaskList'
+import Modal from '../Modal'
 import Header from './Header'
+import TaskForm from './TaskForm'
+import TaskList from './TaskList'
 
 function Tasks() {
-  return (
-    <div className='flex'>
-      <div className='my-4'>
-        <Header />
-      </div>
-      <form className='flex items-center mx-12'>
+
+  const [showModal, setShowModal] = useState(false)
+
+  return (<> <div className='my-4'>
+    <Header />
+  </div>
+    <div className='flex flex-wrap'>
+      <div className='w-full lg:w-6/12 xl:w-8/12 2xl:w-10/12'>
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -38,7 +42,7 @@ function Tasks() {
             type="search"
             id="default-search"
             className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search"
+            placeholder="Search Mockups, Logos..."
             required=""
           />
           <button
@@ -48,18 +52,23 @@ function Tasks() {
             Search
           </button>
         </div>
-      </form>
-      <TaskList />
-      {/* <UserList /> */}
-      <div className='flex'>
-        <button
-          type="button"
-          className="text-white items-end mx-80 bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        >
-          + Add Task
-        </button>
       </div>
+      {/* <button classNamde='items-center text-white my-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'>
+          <i className="fas fa-plus"></i>
+        </button> */}
+      <button
+        type="button"
+        onClick={() => {
+          setShowModal(true)
+        }}
+        className="text-white ml-3 float-left   bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >
+        + Add Task
+      </button>
     </div>
+    <TaskList />
+    <Modal showModal={showModal} setShowModal={setShowModal} ><TaskForm setShowModal={setShowModal} /></Modal>
+  </>
   )
 }
 
