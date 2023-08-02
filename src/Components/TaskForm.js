@@ -48,12 +48,13 @@ const TaskForm = ({ addTask, setShowModal }) => {
       <button
         onClick={() => { setShowModal(false) }}
         type="button"
-        className="text-white mr-4 bg-gray-300 hover:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium mt-4 rounded-md  text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+        className="text-white mr-4 bg-gray-700 hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium mt-4 rounded-md  text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
       >
         Cancel
       </button>
       <button
-        type="submit"
+        onClick={() => { setShowModal(false) }}
+        type="button"
         className="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium mt-4 rounded-md  text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
       >
         Save

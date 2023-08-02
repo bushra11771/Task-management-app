@@ -1,7 +1,7 @@
 import React from "react";
 import DeleteIcon from "../Images/delete.svg"
 
-const TaskList = ({ tasks = [{ title: "Asad", description: "Bushra soi hoi ha", completed: false }], completeTask, deleteTask }) => {
+const TaskList = ({ tasks = [{ title: "", description: "", completed: false }], completeTask, deleteTask }) => {
   return (
     <ul>
       {tasks.map((task, index) => (
@@ -18,7 +18,7 @@ const TaskList = ({ tasks = [{ title: "Asad", description: "Bushra soi hoi ha", 
             </button>
             <br />
             <img
-              className="cursor-pointer	"
+              className="cursor-pointer	" alt="deleteIcon"
               src={DeleteIcon}
               onClick={() => deleteTask(index)}
             />
